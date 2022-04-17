@@ -12,7 +12,6 @@ import ContactUs from './pages/ContactUs';
 export default function App() {
   return (
     <div className='App'>
-      
       <BrowserRouter>
         <Main>
           <Routes>
@@ -25,7 +24,7 @@ export default function App() {
           </Routes>
         </Main>
       </BrowserRouter>
-    </div>
+      </div>  
   );
 }
 

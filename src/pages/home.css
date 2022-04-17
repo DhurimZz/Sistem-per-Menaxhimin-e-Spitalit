@@ -13,3 +13,8 @@
     left: 50%;
     transform: translateX(-50%);
 }
+.card-position {
+    margin-top: 5em;
+    margin-bottom: 5em;
+    background-color: whitesmoke;
+}
