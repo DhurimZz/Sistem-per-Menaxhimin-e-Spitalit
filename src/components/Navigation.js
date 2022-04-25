@@ -1,5 +1,5 @@
 import React from "react";
-import { Navbar, Nav, Container, NavDropdown } from 'react-bootstrap';
+import { Navbar, Nav, Container } from 'react-bootstrap';
 import { Link } from "react-router-dom";
 
 
@@ -10,13 +10,13 @@ const Navigation = () => {
     return (
         <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
             <Container>
-                <Navbar.Brand href="home"><img src="" alt="QKMF LOGO..."/></Navbar.Brand>
+                <Link to='/' className="navbar-brand"><img src="" alt="QKMF LOGO..."/></Link>
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                 <Navbar.Collapse id="responsive-navbar-nav">
                     <Nav className="me-auto">
-                        <Link to='/admin' className="nav-link ">Administrator</Link>
-                        <Link to='/doctor' className="nav-link ">Doktor</Link>
-                        <Link to='/patient' className="nav-link ">Pacient</Link>
+                        <Link to='/admin' className="nav-link">Administrator</Link>
+                        <Link to='/doctor' className="nav-link">Doktor</Link>
+                        <Link to='/patient' className="nav-link">Pacient</Link>
                     </Nav>
                     <Nav>
                         <Link to='/about' className="nav-link">Reth Nesh</Link>

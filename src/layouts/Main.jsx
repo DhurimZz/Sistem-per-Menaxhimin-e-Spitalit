@@ -8,8 +8,8 @@ const Main = ({ children }) => {
     return (
         <div>
         <div className='page-container'>
-        <div className='content-wrap'>
                     <Navigation />
+        <div className='content-wrap'>
                     {children}
                 </div>
                 <Footer />

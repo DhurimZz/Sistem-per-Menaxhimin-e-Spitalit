@@ -1,15 +1,15 @@
 import React from "react";
-import './Footer.css';
+
 
 const Footer = () => {
     return (
-        <div className="main-footer bg-dark text-white-50" >
+        <div className="pt-4 bg-dark text-white-50" >
             <div className="container">
                 <div className="row">
                     {/* Column1 */}
                     <div className="col">
                         <h4>QKMF LOGO...</h4>
-                        <h1 className="list-unstyled">
+                        <h1 className="list-unstyled fs-6">
                             <li>Administrator</li>
                             <li>Doktor</li>
                             <li>Pacient</li>
@@ -18,7 +18,7 @@ const Footer = () => {
                     {/* Column2 */}
                     <div className="col">
                         <h4>Rreth Nesh</h4>
-                        <h1 className="list-unstyled">
+                        <h1 className="list-unstyled fs-6">
                             <li>UBT-Students</li>
                             <li>Ahmet Kaçiku, Ferizaj</li>
                         </h1>
@@ -26,7 +26,7 @@ const Footer = () => {
                     {/* Column3 */}
                     <div className="col">
                         <h4>Na Kontaktoni</h4>
-                        <h1 className="list-unstyled">
+                        <h1 className="list-unstyled fs-6">
                             <li>al55544@ubt-uni.net</li>
                             <li>dz52352@ubt-uni.net</li>
                         </h1>
