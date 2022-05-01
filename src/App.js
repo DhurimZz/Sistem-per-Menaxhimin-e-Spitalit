@@ -10,6 +10,8 @@ import About from './pages/AboutUs';
 import ContactUs from './pages/ContactUs';
 import Register from './pages/Register';
 import LoginForm from './components/LoginForm';
+import RegisterPatient from './pages/RegisterPatient';
+import Dashboard from './pages/Dashboard';
 
 export default function App() {
   return (
@@ -24,7 +26,9 @@ export default function App() {
             <Route exact path="about" element={<About/>} />
             <Route exact path="contact" element={<ContactUs />} />
             <Route exact path="register" element={<Register />} />
+            <Route exact path="registerpatient" element={<RegisterPatient />} />
             <Route exact path="login" element={<LoginForm />} />
+            <Route exact path="dashboard" element={<Dashboard />} />
           </Routes>
         </Main>
       </BrowserRouter>

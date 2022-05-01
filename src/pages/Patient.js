@@ -12,7 +12,7 @@ const Patient = () => {
         <p>Mirsevini ne Qendren Kryesore te Mjeksis Familiare.</p>
         <hr/>
         <p>Pasi te KYÇENI/REGJISTROHENI do keni qasje te ndryshme.</p>
-        <button type="button" className="btn btn-primary mx-2">Regjistrohu</button>
+        <button type="button" className="btn btn-primary mx-2"><Link to='/registerpatient' className='text-decoration-none text-white'>Regjistrohu</Link></button>
         <Link to='/login'><button type="button" className="btn btn-primary">Kyçu</button></Link>
       </div>
     </div>

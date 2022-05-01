@@ -1,5 +1,5 @@
 import React from "react";
-
+import { Link } from 'react-router-dom';
 
 const Footer = () => {
     return (
@@ -10,7 +10,7 @@ const Footer = () => {
                     <div className="col">
                         <h4>QKMF LOGO...</h4>
                         <h1 className="list-unstyled fs-6">
-                            <li>Administrator</li>
+                            <li><Link to='/dashboard'>Administrator</Link></li>
                             <li>Doktor</li>
                             <li>Pacient</li>
                         </h1>
