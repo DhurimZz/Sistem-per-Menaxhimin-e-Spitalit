@@ -12,6 +12,7 @@ import Register from './pages/Register';
 import LoginForm from './components/LoginForm';
 import RegisterPatient from './pages/RegisterPatient';
 import Dashboard from './pages/Dashboard';
+import Doctors from './pages/Doctors';
 
 export default function App() {
   return (
@@ -29,6 +30,7 @@ export default function App() {
             <Route exact path="registerpatient" element={<RegisterPatient />} />
             <Route exact path="login" element={<LoginForm />} />
             <Route exact path="dashboard" element={<Dashboard />} />
+            <Route exact path="doctors" element={<Doctors />} />
           </Routes>
         </Main>
       </BrowserRouter>
