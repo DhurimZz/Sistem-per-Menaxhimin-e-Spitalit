@@ -13,6 +13,9 @@ import LoginForm from './components/LoginForm';
 import RegisterPatient from './pages/RegisterPatient';
 import Dashboard from './pages/Dashboard';
 import Doctors from './pages/Doctors';
+import Specialisations from './pages/Specialisations';
+import AddSpecialisation from './pages/AddSpecialisation';
+import EditSpecialisation from './pages/EditSpecialisation';
 
 export default function App() {
   return (
@@ -31,6 +34,9 @@ export default function App() {
             <Route exact path="login" element={<LoginForm />} />
             <Route exact path="dashboard" element={<Dashboard />} />
             <Route exact path="doctors" element={<Doctors />} />
+            <Route exact path="specialisations" element={<Specialisations />} />
+            <Route exact path="specialisations/add" element={<AddSpecialisation />} />
+            <Route exact path="specialisations/edit/:id" element={<EditSpecialisation />} />
           </Routes>
         </Main>
       </BrowserRouter>
