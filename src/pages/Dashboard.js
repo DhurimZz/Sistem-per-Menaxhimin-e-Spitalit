@@ -12,8 +12,9 @@ const Dashboard = ({children}) => {
                         className="fas fa-user-secret me-2"></i>Admininstrata</div>
                     <div className="list-group list-group-flush my-3">
                         <a className="list-group-item list-group-item-action bg-transparent fw-bold">Dashboard</a>
-                       <Link to='/doctorCreateReadUpdateDelete' className="list-group-item list-group-item-action bg-transparent fw-bold"> Doktoret</Link>
+                       <Link to='/doctors' className="list-group-item list-group-item-action bg-transparent fw-bold"> Doktoret</Link>
                        <Link to='/patient' className="list-group-item list-group-item-action bg-transparent fw-bold"> Pacientet</Link>
+                       <Link to='/Specialisations' className="list-group-item list-group-item-action bg-transparent fw-bold"> Specializimet</Link>
                         <a className="list-group-item list-group-item-action bg-transparent fw-bold">Terminet</a>
                     </div>
                 </div>

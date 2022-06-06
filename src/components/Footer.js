@@ -10,7 +10,7 @@ const Footer = () => {
                     <div className="col">
                         <h4>QKMF LOGO...</h4>
                         <h1 className="list-unstyled fs-6">
-                            <li><Link to='/dashboard'>Administrator</Link></li>
+                            <li>Administrator   </li>
                             <li>Doktor</li>
                             <li>Pacient</li>
                         </h1>

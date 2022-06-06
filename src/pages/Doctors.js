@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import Dashboard from './Dashboard.js';
+import { Link } from 'react-router-dom';
 
 
 const Doctors = () => {
@@ -60,7 +61,7 @@ const Doctors = () => {
                                     <td>N/A</td>
                                     <td>N/A</td>
                                     <td>Doctor</td>
-                                    <td><button type="button"className="btn btn-primary" >Edit</button></td>
+                                    <td><Link to='/editdoctor'><button type="button"className="btn btn-primary">Edit</button></Link></td>
                                     <td><button type="button"className="btn btn-danger" onClick={()=>deleteUser(doctor.id)}>Delete</button></td>
                                 </tr>
                             ))

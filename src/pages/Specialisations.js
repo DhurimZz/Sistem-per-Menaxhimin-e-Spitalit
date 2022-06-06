@@ -46,12 +46,12 @@ const Specialisations = () => {
                     </thead>
                     <tbody>
                         {
-                            specialisations.map((doctor)=>(
-                                <tr key={doctor.specialisationId}>
+                            specialisations.map((specialisations)=>(
+                                <tr key={specialisations.specialisationId}>
                                     <th scope="row">1</th>
-                                    <td>{doctor.name}</td>
-                                    <td><button type="button"className="btn btn-primary" onClick={()=>navigate(`/specialisations/edit/${doctor.specialisationId}`)} >Edit</button></td>
-                                    <td><button type="button"className="btn btn-danger" onClick={()=>deleteSpecialisation(doctor.specialisationId)}>Delete</button></td>
+                                    <td>{specialisations.name}</td>
+                                    <td><button type="button"className="btn btn-primary" onClick={()=>navigate(`/specialisations/edit/${specialisations.specialisationId}`)} >Edit</button></td>
+                                    <td><button type="button"className="btn btn-danger" onClick={()=>deleteSpecialisation(specialisations.specialisationId)}>Delete</button></td>
                                 </tr>
                             ))
                         }

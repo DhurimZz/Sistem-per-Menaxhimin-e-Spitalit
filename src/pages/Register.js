@@ -1,12 +1,12 @@
 import axios from 'axios';
 import { useFormik } from 'formik';
-import React from 'react';
-import { Link, useNavigate  } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import * as Yup from 'yup';
 
 
 const Register = () => {
-    const navigate = useNavigate ();
+    const navigate = useNavigate();
 
     const formik = useFormik({
         initialValues: {},
@@ -15,23 +15,25 @@ const Register = () => {
             surname: Yup.string().required(),
             email: Yup.string().email().required(),
             address: Yup.string().required(),
-            password:  Yup
-            .string()
-            .required('Please Enter your password')
-            .matches(
-              /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/,
-              "Must Contain 8 Characters, One Uppercase, One Lowercase, One Number and One Special Case Character"
-            ),
+            specialisationid: Yup.string().required(),
+            password: Yup
+                .string()
+                .required('Please Enter your password')
+                .matches(
+                    /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/,
+                    "Must Contain 8 Characters, One Uppercase, One Lowercase, One Number and One Special Case Character"
+                ),
         }),
         onSubmit: async (values) => {
             try {
-                const res = await axios.post('https://localhost:44333/api/auth/register-doctor?name=Dhurim', {
+                const res = await axios.post('https://localhost:44333/api/auth/register-doctor', {
                     name: values.name,
                     surname: values.surname,
                     email: values.email,
                     username: values.email,
                     address: values.address,
                     password: values.password,
+                    specialisationid: values.specialisationid,
                 })
                 navigate('/doctors')
             } catch (error) {
@@ -39,6 +41,21 @@ const Register = () => {
             }
         }
     })
+
+    const [specialisations, setSpecialisations] = useState([]);
+
+
+    const fetchAllSpecialisations = async () => {
+        try {
+            const res = await axios.get('https://localhost:44333/api/specialisations')
+            setSpecialisations(res.data)
+        } catch (error) {
+            console.log(error)
+        }
+    }
+    useEffect(() => {
+        fetchAllSpecialisations()
+    }, [])
 
     return (
         <div className='bg-light'>
@@ -99,13 +116,25 @@ const Register = () => {
                             }} value={formik.values.address} type="text" className="form-control" id="inputAddress" placeholder="1234 Main St" />
                             <span className='text-danger text-start'>{formik.errors.address}</span>
                         </div>
-                        {/* <div className="col-12 col-md-6 d-flex flex-column align-items-start mt-3">
+
+                        <div className="col-12 col-md-6 d-flex flex-column align-items-start mt-3">
                             <label htmlFor="inputSpecialisation" className="form-label text-start">Specializimi</label>
-                            <select id="inputSpecialisation" className="form-select">
-                                <option value='Choose'>Zgjidh...</option>
-                                <option>...</option>
+                            <select onChange={(e) => {
+                                    formik.setValues((prev) => ({
+                                    ...prev,
+                                    specialisationid: e.target.value
+                                }))
+                            }} id="inputSpecialisation" className="form-select">
+                                {
+                                    specialisations.map((specialisation, index) => (
+                                        <option key={index} value={specialisation.specialisationId}>{specialisation.name}</option>
+                                    ))
+                                }
                             </select>
+                            <span className='text-danger text-start'>{formik.errors.specialisationid}</span>
                         </div>
+
+                        {/* 
                         <div className="col-12 col-md-6 d-flex flex-column align-items-start mt-3">
                             <label htmlFor="inputGender" className="form-label text-start">Gjinia</label>
                             <select id="inputGender" className="form-select">

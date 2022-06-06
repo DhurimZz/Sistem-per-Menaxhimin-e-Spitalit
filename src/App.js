@@ -16,6 +16,7 @@ import Doctors from './pages/Doctors';
 import Specialisations from './pages/Specialisations';
 import AddSpecialisation from './pages/AddSpecialisation';
 import EditSpecialisation from './pages/EditSpecialisation';
+import EditDoctor from './pages/EditDoctor';
 
 export default function App() {
   return (
@@ -37,6 +38,7 @@ export default function App() {
             <Route exact path="specialisations" element={<Specialisations />} />
             <Route exact path="specialisations/add" element={<AddSpecialisation />} />
             <Route exact path="specialisations/edit/:id" element={<EditSpecialisation />} />
+            <Route exact path="editdoctor" element={<EditDoctor />} />
           </Routes>
         </Main>
       </BrowserRouter>
