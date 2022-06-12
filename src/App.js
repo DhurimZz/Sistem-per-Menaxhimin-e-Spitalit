@@ -38,7 +38,7 @@ export default function App() {
             <Route exact path="specialisations" element={<Specialisations />} />
             <Route exact path="specialisations/add" element={<AddSpecialisation />} />
             <Route exact path="specialisations/edit/:id" element={<EditSpecialisation />} />
-            <Route exact path="editdoctor" element={<EditDoctor />} />
+            <Route exact path="doctors/edit/:id" element={<EditDoctor />} />
           </Routes>
         </Main>
       </BrowserRouter>

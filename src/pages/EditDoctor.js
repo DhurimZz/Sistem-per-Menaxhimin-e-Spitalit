@@ -7,57 +7,129 @@ const EditDoctor = () => {
 
     const navigate = useNavigate();
     const params = useParams();
-    const [doctors, setDoctors] = useState([]);
+    const [doctor, setDoctor] = useState({
+        name: '',
+        surname: '',
+        address: '',
+        specialisationId: null,
+    });
 
-    const handleSubmit = async () => {
-        try{
-            const res = await axios.put(`https://localhost:44333/api/doctors/${params.id}`, {
+    const [specialisations, setSpecialisations] = useState([]);
 
-            })  
-            navigate('/Doctors');
-        }catch (error) {
+    const fetchAllSpecialisations = async () => {
+        try {
+            const res = await axios.get('https://localhost:44333/api/specialisations')
+            setSpecialisations(res.data)
+        } catch (error) {
             console.log(error)
         }
-
     }
-  return (
-    <div className='bg-light'>
+
+    const handleSubmit = async () => {
+        try {
+            const res = await axios.put(`https://localhost:44333/api/doctors/${params.id}`, {
+                name: doctor.name,
+                surname: doctor.surname,
+                address: doctor.address,
+                specialisationId: doctor.specialisationId,
+            })
+
+            navigate('/Doctors');
+        } catch (error) {
+            console.log(error.response)
+        }
+    }
+
+    const fetchDoctor = async () => {
+        try {
+            const res = await axios.get(`https://localhost:44333/api/doctors/${params.id}`)
+            console.log(res)
+            setDoctor({
+                name: res.data.name,
+                surname: res.data.surename,
+                address: res.data.address,
+                specialisationId: res.data.specialisationId
+            })
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
+    const currentSpec = specialisations.find((spec) => spec.specialisationId === doctor.specialisationId)
+
+    
+
+    useEffect(() => {
+        fetchDoctor();
+        fetchAllSpecialisations();
+    }, [])
+
+    return (
+        <div className='bg-light'>
             <div className='container min-vh-100'>
                 <div className='min-vh-100 d-flex justify-content-center align-items-center'>
-                    <form className='p-5 col-12 col-md-8 col-lg-6 row border bg-white position-relative rounded'>
+                    <form className='p-5 col-12 col-md-8 col-lg-6 row border bg-white position-relative rounded' onSubmit={(e) => {
+                        e.preventDefault();
+                        handleSubmit();
+                    }}>
                         <p style={{ background: "-webkit-linear-gradient(left, #0072ff, #8811c5)", height: "5rem" }} className='text-white text-center position-absolute top-0 start-0 fs-3 d-flex justify-content-center align-items-center'>Perditesim Per Doktor</p>
                         <div className='mt-5 pt-3 col-12 col-md-6 d-flex flex-column align-items-start'>
                             <label htmlFor="inputName4" className="form-label text-start">Emri</label>
-                            <input type="text" className="form-control" id="inputName4" />
+                            <input value={doctor.name} onChange={(e) => {
+                                setDoctor((prev) => ({
+                                    ...prev,
+                                    name: e.target.value
+                                }))
+                            }} type="text" className="form-control" id="inputName4" />
                             <span className='text-danger text-start'></span>
                         </div>
                         <div className="mt-5 pt-3 col-12 col-md-6 d-flex flex-column align-items-start">
                             <label htmlFor="inputSurname4" className="form-label text-start">Mbiemri</label>
-                            <input  type="text" className="form-control" id="inputSurname4" />
+                            <input value={doctor.surname} onChange={(e) => {
+                                setDoctor((prev) => ({
+                                    ...prev,
+                                    surname: e.target.value
+                                }))
+                            }} type="text" className="form-control" id="inputSurname4" />
                             <span className='text-danger text-start'></span>
                         </div>
-                        <div className="col-12 col-md-6 d-flex flex-column align-items-start mt-3">
-                            <label htmlFor="inputEmail" className="form-label text-start">Email</label>
-                            <input  type="email" className="form-control" id="inputEmail" />
-                            <span className='text-danger text-start'></span>
-                        </div>
-                        <div className="col-12 col-md-6 d-flex flex-column align-items-start mt-3">
+                        {/* <div className="col-12 d-flex flex-column align-items-start mt-3">
                             <label htmlFor="inputPassword" className="form-label text-start">Fjalkalimi</label>
-                            <input type="password" className="form-control" id="inputPassword" />
+                            <input value={doctor.password} onChange={(e) => {
+                                setDoctor((prev) => ({
+                                    ...prev,
+                                    password: e.target.value
+                                }))
+                            }} type="password" className="form-control" id="inputPassword" />
                             <span className='text-danger text-start'></span>
-                        </div>
+                        </div> */}
                         <div className="col-12 d-flex flex-column align-items-start mt-3">
                             <label htmlFor="inputAddress" className="form-label text-start">Adresa</label>
-                            <input  type="text" className="form-control" id="inputAddress" placeholder="1234 Main St" />
+                            <input value={doctor.address} onChange={(e) => {
+                                setDoctor((prev) => ({
+                                    ...prev,
+                                    address: e.target.value
+                                }))
+                            }} type="text" className="form-control" id="inputAddress" placeholder="1234 Main St" />
                             <span className='text-danger text-start'></span>
                         </div>
-                        {/* <div className="col-12 col-md-6 d-flex flex-column align-items-start mt-3">
+                        <div className="col-12 col-md-6 d-flex flex-column align-items-start mt-3">
                             <label htmlFor="inputSpecialisation" className="form-label text-start">Specializimi</label>
-                            <select id="inputSpecialisation" className="form-select">
-                                <option value='Choose'>Zgjidh...</option>
-                                <option>...</option>
+                            <select id="inputSpecialisation" className="form-select"
+                                onChange={(e) => {
+                                    setDoctor((prev) => ({
+                                        ...prev,
+                                        specialisationid: e.target.value
+                                    }))
+                                }}  >
+                                {
+                                    specialisations.map((specialisation, index) => (
+                                        <option key={index} selected={currentSpec && currentSpec.specialisationId === specialisation.specialisationId} value={specialisation.specialisationId}>{specialisation.name}</option>
+                                    ))
+                                }
                             </select>
                         </div>
+                        {/*
                         <div className="col-12 col-md-6 d-flex flex-column align-items-start mt-3">
                             <label htmlFor="inputGender" className="form-label text-start">Gjinia</label>
                             <select id="inputGender" className="form-select">
@@ -88,7 +160,7 @@ const EditDoctor = () => {
                 </div>
             </div>
         </div>
-  )
+    )
 }
 
 export default EditDoctor

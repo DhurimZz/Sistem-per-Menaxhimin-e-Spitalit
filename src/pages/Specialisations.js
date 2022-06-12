@@ -5,6 +5,7 @@ import Dashboard from './Dashboard.js';
 
 
 const Specialisations = () => {
+    var index = 1;
     const navigate = useNavigate();
     const [specialisations, setSpecialisations] = useState([]);
 
@@ -48,7 +49,7 @@ const Specialisations = () => {
                         {
                             specialisations.map((specialisations)=>(
                                 <tr key={specialisations.specialisationId}>
-                                    <th scope="row">1</th>
+                                    <th scope="row">{index++}</th>
                                     <td>{specialisations.name}</td>
                                     <td><button type="button"className="btn btn-primary" onClick={()=>navigate(`/specialisations/edit/${specialisations.specialisationId}`)} >Edit</button></td>
                                     <td><button type="button"className="btn btn-danger" onClick={()=>deleteSpecialisation(specialisations.specialisationId)}>Delete</button></td>
