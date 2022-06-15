@@ -1,8 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { Card } from 'react-bootstrap';
-import './Dashboard.css';
-import doctoricon1 from './photo/doctoricon1.jpg';
+import '../Dashboard.css';
+import doctoricon1 from '../photo/doctoricon1.jpg';
 
 const DrDashboard = ({children}) => {
     return (

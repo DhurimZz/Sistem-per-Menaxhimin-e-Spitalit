@@ -31,8 +31,8 @@ const Home = () => {
               <Card.Text>
                 Regjistrohu apo Kyqu si Administrator.
               </Card.Text>
-              <Link to="/admin" className='text-decoration-none text-white'> <button className=" btn btn-primary " type="submit">Log In</button></Link>
             </Card.Body>
+              <Link to="/admin" className='text-decoration-none text-white'> <button className=" btn btn-primary " type="submit">Kyçu</button></Link>
           </Card>
           <Card  style={{width: "18rem"}}  className='col-md-4 shadow p-3 my-3 bg-body rounded'>
             <Card.Img variant="top" src={doctoricon1} />
@@ -41,8 +41,8 @@ const Home = () => {
               <Card.Text>
                 Regjistrohu apo kyqu si Doktor.
               </Card.Text>
-              <Link to="/doctor" className='text-decoration-none text-white'> <button className="btn btn-primary " type="submit">Log In</button></Link>
             </Card.Body>
+              <Link to="/doctor" className='text-decoration-none text-white'> <button className="btn btn-primary " type="submit">Kyçu</button></Link>
           </Card>
           <Card style={{width: "18rem"}} className='col-md-4 shadow p-3 my-3 bg-body rounded'>
             <Card.Img variant="top" src={patienticon1} />
@@ -51,8 +51,8 @@ const Home = () => {
               <Card.Text>
                 Regjistrohu apo kyqu si Pacient.
               </Card.Text>
-              <Link to="/patient" className='text-decoration-none text-white'> <button className=" btn btn-primary " type="submit">Log In</button></Link>
             </Card.Body>
+              <Link to="/patient" className='text-decoration-none text-white'> <button className=" btn btn-primary " type="submit">Kyçu</button></Link>
           </Card>
       </div>
     </div>

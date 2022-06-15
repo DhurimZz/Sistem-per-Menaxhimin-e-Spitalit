@@ -15,7 +15,8 @@ const Register = () => {
             surname: Yup.string().required(),
             email: Yup.string().email().required(),
             address: Yup.string().required(),
-            specialisationid: Yup.string().required(),
+            specialisationid: Yup.string().required('Select the specialisation'),
+            countryid: Yup.string().required('Select the state'),
             password: Yup
                 .string()
                 .required('Please Enter your password')
@@ -34,6 +35,7 @@ const Register = () => {
                     address: values.address,
                     password: values.password,
                     specialisationid: values.specialisationid,
+                    countryid: values.countryid,
                 })
                 navigate('/doctors')
             } catch (error) {
@@ -43,7 +45,7 @@ const Register = () => {
     })
 
     const [specialisations, setSpecialisations] = useState([]);
-
+    const [countries, setCountries] = useState([]);
 
     const fetchAllSpecialisations = async () => {
         try {
@@ -53,8 +55,20 @@ const Register = () => {
             console.log(error)
         }
     }
+
+    const fetchAllCountries = async () => {
+        try {
+            const res = await axios.get('https://localhost:44333/api/countries')
+            setCountries(res.data)
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
+
     useEffect(() => {
-        fetchAllSpecialisations()
+        fetchAllSpecialisations();
+        fetchAllCountries();
     }, [])
 
     return (
@@ -120,7 +134,7 @@ const Register = () => {
                         <div className="col-12 col-md-6 d-flex flex-column align-items-start mt-3">
                             <label htmlFor="inputSpecialisation" className="form-label text-start">Specializimi</label>
                             <select onChange={(e) => {
-                                    formik.setValues((prev) => ({
+                                formik.setValues((prev) => ({
                                     ...prev,
                                     specialisationid: e.target.value
                                 }))
@@ -133,18 +147,26 @@ const Register = () => {
                             </select>
                             <span className='text-danger text-start'>{formik.errors.specialisationid}</span>
                         </div>
-
+                        <div className="col-12 col-md-4 d-flex flex-column align-items-start mt-3">
+                            <label htmlFor="inputState" className="form-label text-start">Shteti</label>
+                            <select id="inputState" className="form-select" onChange={(e) => {
+                                formik.setValues((prev) => ({
+                                    ...prev,
+                                    countryid: e.target.value
+                                }))
+                            }}>
+                                {
+                                    countries.map((country, index) => (
+                                        <option key={index} value={country.countryId}>{country.name}</option>
+                                    ))
+                                }
+                            </select>
+                            <span className='text-danger text-start'>{formik.errors.countryid}</span>
+                        </div>
                         {/* 
                         <div className="col-12 col-md-6 d-flex flex-column align-items-start mt-3">
                             <label htmlFor="inputGender" className="form-label text-start">Gjinia</label>
                             <select id="inputGender" className="form-select">
-                                <option value='Choose'>Zgjidh...</option>
-                                <option>...</option>
-                            </select>
-                        </div>
-                        <div className="col-12 col-md-4 d-flex flex-column align-items-start mt-3">
-                            <label htmlFor="inputState" className="form-label text-start">Shteti</label>
-                            <select id="inputState" className="form-select">
                                 <option value='Choose'>Zgjidh...</option>
                                 <option>...</option>
                             </select>

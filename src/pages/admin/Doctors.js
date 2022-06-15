@@ -8,6 +8,7 @@ import  { useNavigate } from 'react-router-dom';
 const Doctors = () => {
     const [doctors, setDoctors] = useState([]);
     const [specialisations, setSpecialisations] = useState([]);
+    const [countries, setCountries] = useState([]);
     const navigate = useNavigate();
 
     const fetchAllDoctors = async () => {
@@ -27,6 +28,14 @@ const Doctors = () => {
             console.log(error)
         }
     }
+    const fetchAllCountries = async () => {
+        try {
+            const res = await axios.get('https://localhost:44333/api/countries')
+            setCountries(res.data)
+        } catch (error) {
+            console.log(error)
+        }
+    }
 
     const deleteUser = async (id) => {
         try {
@@ -40,13 +49,14 @@ const Doctors = () => {
     useEffect(() => {
         fetchAllDoctors();
         fetchAllSpecialisations();
+        fetchAllCountries();
     }, [])
 
     return (
         <div >
             <Dashboard >
                 <div className='w-100'>
-                    <table className="table table-success table-striped ">
+                    <table className="table table-bordered border-primary ">
                         <thead>
                             <tr>
                                 <th scope="col">#</th>
@@ -64,7 +74,8 @@ const Doctors = () => {
                         <tbody>
                             {
                                 doctors.map((doctor, index) => {
-                                    const currentSpec = specialisations.find((spec) => spec.specialisationId === doctor.specialisationId)
+                                    const currentSpec = specialisations.find((spec) => spec.specialisationId === doctor.specialisationId);
+                                    const currentCountry = countries.find((country) => country.countryId === doctor.countryId);
 
                                     return <tr key={doctor.id}>
                                         <th scope="row">{index + 1}</th>
@@ -73,7 +84,7 @@ const Doctors = () => {
                                         <td>{doctor.email}</td>
                                         <td>{currentSpec ? currentSpec.name : 'N/A'}</td>
                                         <td>N/A</td>
-                                        <td>N/A</td>
+                                        <td>{currentCountry ? currentCountry.name : 'N/A'}</td>
                                         <td>Doctor</td>
                                         <td><button type="button" className="btn btn-primary" onClick={()=>navigate(`/doctors/edit/${doctor.id}`)}>Edit</button></td>
                                         <td><button type="button" className="btn btn-danger" onClick={() => deleteUser(doctor.id)}>Delete</button></td>

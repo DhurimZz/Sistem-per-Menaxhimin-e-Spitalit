@@ -119,7 +119,7 @@ const EditDoctor = () => {
                                 onChange={(e) => {
                                     setDoctor((prev) => ({
                                         ...prev,
-                                        specialisationid: e.target.value
+                                        specialisationId: e.target.value
                                     }))
                                 }}  >
                                 {
