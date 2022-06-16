@@ -20,6 +20,8 @@ import EditSpecialisation from './pages/admin/EditSpecialisation';
 import EditDoctor from './pages/admin/EditDoctor';
 import Countries from './pages/admin/Countries';
 import EditCountry from './pages/admin/EditCountry';
+import Cities from './pages/admin/Cities';
+import EditCity from './pages/admin/EditCity';
 
 export default function App() {
   return (
@@ -45,6 +47,8 @@ export default function App() {
             <Route exact path="doctors/edit/:id" element={<EditDoctor />} />
             <Route exact path="countries" element={<Countries />} />
             <Route exact path="countries/edit/:id" element={<EditCountry />}/>
+            <Route exact path="cities" element={<Cities />} />
+            <Route exact path="cities/edit/:id" element={<EditCity />} />
           </Routes>
         </Main>
       </BrowserRouter>

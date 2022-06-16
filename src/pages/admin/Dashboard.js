@@ -19,6 +19,7 @@ const Dashboard = ({children}) => {
                        <Link to='/Specialisations' className="list-group-item list-group-item-action bg-transparent fw-bold"> Specializimet</Link>
                         <a className="list-group-item list-group-item-action bg-transparent fw-bold">Terminet</a>
                         <Link to='/countries' className="list-group-item list-group-item-action bg-transparent fw-bold">Shtetet</Link>
+                        <Link to='/cities' className="list-group-item list-group-item-action bg-transparent fw-bold">Qytete</Link>
                     </div>
                 </div>
             </div>
