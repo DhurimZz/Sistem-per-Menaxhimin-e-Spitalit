@@ -9,7 +9,7 @@ const Navigation = () => {
     return (
         <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
             <Container>
-                <Link to='/' className="navbar-brand"><img src='' alt="QKMF LOGO..."/></Link>
+                <Link to='/' className="navbar-brand">QKMF</Link>
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                 <Navbar.Collapse id="responsive-navbar-nav">
                     <Nav className="me-auto">

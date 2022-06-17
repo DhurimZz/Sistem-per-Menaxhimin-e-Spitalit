@@ -22,6 +22,7 @@ import Countries from './pages/admin/Countries';
 import EditCountry from './pages/admin/EditCountry';
 import Cities from './pages/admin/Cities';
 import EditCity from './pages/admin/EditCity';
+import Contacts from './pages/admin/Contacts';
 
 export default function App() {
   return (
@@ -34,7 +35,7 @@ export default function App() {
             <Route exact path="doctor" element={<Doctor/>} />
             <Route exact path="patient" element={<Patient/>} />
             <Route exact path="about" element={<About/>} />
-            <Route exact path="contact" element={<ContactUs />} />
+            <Route exact path="contactus" element={<ContactUs />} />
             <Route exact path="register" element={<Register />} />
             <Route exact path="registerpatient" element={<RegisterPatient />} />
             <Route exact path="login" element={<LoginForm />} />
@@ -49,6 +50,7 @@ export default function App() {
             <Route exact path="countries/edit/:id" element={<EditCountry />}/>
             <Route exact path="cities" element={<Cities />} />
             <Route exact path="cities/edit/:id" element={<EditCity />} />
+            <Route exact path="contacts" element={<Contacts />} />
           </Routes>
         </Main>
       </BrowserRouter>

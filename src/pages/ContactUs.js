@@ -1,7 +1,35 @@
-import React from 'react'
 import { Container, Row, Col } from "react-bootstrap";
+import axios from 'axios';
+import { useFormik } from 'formik';
+import React, { useEffect, useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import * as Yup from 'yup';
 
 const ContactUs = () => {
+  const navigate = useNavigate();
+
+  const formik = useFormik({
+    initialValues: {},
+    validationSchema: Yup.object().shape({
+      name: Yup.string().required(),
+      email: Yup.string().email().required(),
+      message: Yup.string().required()
+
+    }),
+    onSubmit: async (values) => {
+      try {
+        const res = await axios.post('https://localhost:44333/api/contacts', {
+          name: values.name,
+          email: values.email,
+          message: values.message,
+        })
+        navigate('/contacts')
+      } catch (error) {
+        console.log(error)
+      }
+    }
+  })
+
   return (
     <div className="pt-4 bg-secondary text-black" >
       <Container>
@@ -28,10 +56,18 @@ const ContactUs = () => {
             </address>
           </Col>
           <Col lg="7" className="d-flex align-items-center">
-            <form className="contact__form w-100">
+            <form onSubmit={(e) => {
+                        e.preventDefault()
+                        formik.handleSubmit()
+                    }} className="contact__form w-100">
               <Row>
-                <Col lg="6" className="form-group">
-                  <input
+                <Col lg="6" className="form-group mb-4">
+                  <input onChange={(e) => {
+                                formik.setValues((prev) => ({
+                                    ...prev,
+                                    name: e.target.value
+                                }))
+                            }} value={formik.values.name}
                     className="form-control"
                     id="name"
                     name="name"
@@ -39,30 +75,43 @@ const ContactUs = () => {
                     type="text"
                     required
                   />
+                  <span className='text-danger text-start'>{formik.errors.name}</span>
                 </Col>
-                <Col lg="6" className="form-group">
-                  <input
-                    className="form-control rounded-0"
+                <Col lg="6" className="form-group mb-4">
+                  <input onChange={(e) => {
+                                formik.setValues((prev) => ({
+                                    ...prev,
+                                    email: e.target.value
+                                }))
+                            }} value={formik.values.email}
+                    className="form-control"
                     id="email"
                     name="email"
                     placeholder="Email"
                     type="email"
                     required
                   />
+                  <span className='text-danger text-start'>{formik.errors.email}</span>
                 </Col>
               </Row>
-              <textarea
-                className="form-control rounded-0"
+              <textarea onChange={(e) => {
+                                formik.setValues((prev) => ({
+                                    ...prev,
+                                    message: e.target.value
+                                }))
+                            }} value={formik.values.message}
+                className="form-control"
                 id="message"
                 name="message"
                 placeholder="Message"
                 rows="5"
                 required
               ></textarea>
+              <span className='text-danger text-start'>{formik.errors.message}</span>
               <br />
               <Row>
                 <Col lg="12" className="form-group">
-                  <button className="btn ac_btn btn-primary" type="submit">
+                  <button className="btn ac_btn btn-primary mb-4" type="submit">
                     Send
                   </button>
                 </Col>
