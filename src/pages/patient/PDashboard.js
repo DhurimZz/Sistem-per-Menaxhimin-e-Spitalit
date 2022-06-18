@@ -14,8 +14,7 @@ const PDashboard = ({children}) => {
                         className="fas fa-user-secret me-2"><Card.Img variant="top" src={patienticon1} /> </i>Pacient</div>  
                     <div className="list-group list-group-flush my-3">
                        <Link to='/patient' className="list-group-item list-group-item-action bg-transparent fw-bold"> Pacientet</Link>
-                       <Link to='/Specialisations' className="list-group-item list-group-item-action bg-transparent fw-bold"> Specializimet</Link>
-                        <a className="list-group-item list-group-item-action bg-transparent fw-bold">Terminet</a>
+                       <Link to='/terminet' className="list-group-item list-group-item-action bg-transparent fw-bold">Terminet</Link>
                     </div>
                 </div>
             </div>
