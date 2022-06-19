@@ -24,6 +24,7 @@ import Cities from './pages/admin/Cities';
 import EditCity from './pages/admin/EditCity';
 import Contacts from './pages/admin/Contacts';
 import Patients from './pages/admin/Patient';
+import EditPatient from './pages/admin/EditPatient';
 
 export default function App() {
   return (
@@ -53,6 +54,7 @@ export default function App() {
             <Route exact path="cities/edit/:id" element={<EditCity />} />
             <Route exact path="contacts" element={<Contacts />} />
             <Route exact path="patients" element={<Patients />} />
+            <Route exact path="patients/edit/:id" element={<EditPatient />} />
           </Routes>
         </Main>
       </BrowserRouter>
