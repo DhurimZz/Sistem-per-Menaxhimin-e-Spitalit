@@ -25,6 +25,12 @@ import EditCity from './pages/admin/EditCity';
 import Contacts from './pages/admin/Contacts';
 import Patients from './pages/admin/Patient';
 import EditPatient from './pages/admin/EditPatient';
+import Appointment from './pages/admin/Appointment';
+import AddAppointment from './pages/admin/AddAppointment';
+import EditAppointment from './pages/admin/EditAppointment';
+import Drugs from './pages/admin/Drugs';
+import AddDrug from './pages/admin/AddDrug';
+import EditDrug from './pages/admin/EditDrug';
 
 export default function App() {
   return (
@@ -55,6 +61,12 @@ export default function App() {
             <Route exact path="contacts" element={<Contacts />} />
             <Route exact path="patients" element={<Patients />} />
             <Route exact path="patients/edit/:id" element={<EditPatient />} />
+            <Route exact path="appointment" element={<Appointment/>} />
+            <Route exact path="addAppointment" element={<AddAppointment/>} />
+            <Route exact path="editAppointment" element={<EditAppointment/>} />
+            <Route exact path="drugs" element={<Drugs/>} />
+            <Route exact path="addDrugs" element={<AddDrug/>} />
+            <Route exact path="drugs/edit/:id" element={<EditDrug/>} />
           </Routes>
         </Main>
       </BrowserRouter>
