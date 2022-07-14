@@ -31,6 +31,8 @@ import EditAppointment from './pages/admin/EditAppointment';
 import Drugs from './pages/admin/Drugs';
 import AddDrug from './pages/admin/AddDrug';
 import EditDrug from './pages/admin/EditDrug';
+import Diseases from './pages/admin/Diseases';
+import EditDisease from './pages/admin/EditDisease';
 
 export default function App() {
   return (
@@ -67,6 +69,8 @@ export default function App() {
             <Route exact path="drugs" element={<Drugs/>} />
             <Route exact path="addDrugs" element={<AddDrug/>} />
             <Route exact path="drugs/edit/:id" element={<EditDrug/>} />
+            <Route exact path="diseases" element={<Diseases/>} />
+            <Route exact path="diseases/edit/:id" element={<EditDisease/>} />
           </Routes>
         </Main>
       </BrowserRouter>

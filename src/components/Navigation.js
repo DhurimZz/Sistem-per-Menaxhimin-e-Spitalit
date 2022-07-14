@@ -19,7 +19,7 @@ const Navigation = () => {
                     </Nav>
                     <Nav>
                         <Link to='/about' className="nav-link">Reth Nesh</Link>
-                        <Link to='/contact' className="nav-link">Na Kontaktoni</Link>
+                        <Link to='/contactus' className="nav-link">Na Kontaktoni</Link>
                     </Nav>
                 </Navbar.Collapse>
             </Container>

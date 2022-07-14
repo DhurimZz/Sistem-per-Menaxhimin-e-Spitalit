@@ -15,6 +15,7 @@ const PDashboard = ({children}) => {
                     <div className="list-group list-group-flush my-3">
                        <Link to='/patient' className="list-group-item list-group-item-action bg-transparent fw-bold"> Pacientet</Link>
                        <Link to='/terminet' className="list-group-item list-group-item-action bg-transparent fw-bold">Terminet</Link>
+                       <Link to='' className="list-group-item list-group-item-action bg-transparent fw-bold">Pagesat</Link>
                     </div>
                 </div>
             </div>

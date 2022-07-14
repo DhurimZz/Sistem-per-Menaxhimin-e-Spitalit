@@ -3,6 +3,7 @@ import { useFormik } from 'formik';
 import React, { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import * as Yup from 'yup';
+import jwt_decode from 'jwt-decode';
 
 const LoginForm = () => {
   const navigate = useNavigate();
@@ -20,8 +21,21 @@ const LoginForm = () => {
         const res = await axios.post('https://localhost:44333/api/auth/login', {
           email: values.email,
           password: values.password,
+
         })
-        
+        var token = res.data.token;
+        var decoded = jwt_decode(token);
+        var role = decoded['http://schemas.microsoft.com/ws/2008/06/identity/claims/role']
+        console.log(role);
+        if(role ==='Doctor'){
+          navigate('/DrDashboard');
+        }else if(role ==='Admin'){
+          navigate('/Dashboard');
+        }else if(role ==='Patient'){
+          navigate('/PDashboard');
+        }else{
+          console.log("User-i nuk ekgziston")
+        }
       } catch (error) {
         console.log(error)
       }
